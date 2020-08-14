@@ -2,10 +2,10 @@ const dns = require('dns');
 const URL = require('url').URL;
 
 urlValidate = (url, cb) => {
+  // Parse the URL for the hostname and validate that it resolves to an IP
   try {
     const hostname = new URL(url).hostname;
-    console.log(hostname);
-    dns.lookup(hostname, (err, result) => {
+    dns.lookup(hostname, (err) => {
       if (err) {
         cb(err, null);
       } else {
